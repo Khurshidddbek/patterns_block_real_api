@@ -9,6 +9,7 @@ Widget itemOfPosts(BuildContext context, Contact contact) {
     actionPane: SlidableDrawerActionPane(),
     actionExtentRatio: 0.25,
     child: Container(
+      width: double.infinity,
       padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,6 +24,17 @@ Widget itemOfPosts(BuildContext context, Contact contact) {
         ],
       ),
     ),
+
+    actions: [
+      IconSlideAction(
+        caption: 'Edit',
+        color: Colors.orange,
+        icon: Icons.edit,
+        onTap: () {
+          BlocProvider.of<ListPostCubit>(context).callUpdatePage(context, contact);
+          },
+      ),
+    ],
 
     secondaryActions: [
       IconSlideAction(

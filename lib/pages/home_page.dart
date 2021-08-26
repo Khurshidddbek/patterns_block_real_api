@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Contact> items = [];
+  static List<Contact> items = [];
 
   @override
   void initState() {
@@ -41,7 +41,17 @@ class _HomePageState extends State<HomePage> {
 
           return viewOfHome(items, true);
         },
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        child: Icon(
+          Icons.add
+        ),
+        onPressed: () {
+          BlocProvider.of<ListPostCubit>(context).callCreatePage(context);
+        },
+      ),
     );
   }
 }
